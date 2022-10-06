@@ -39,7 +39,8 @@ const AdsList = () => {
   const InputHandle = async (event) => {
     let key = event.target.value
     let result = await fetch(`http://localhost:3000/search/${key}`)
-    result = await result.json()
+    result=await result.json()
+    setAds(result)
 
     if (result) {
       setAds(result)
