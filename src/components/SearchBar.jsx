@@ -7,7 +7,7 @@ const SearchContainer = styled.div`
   display: flex;
   align-adss: center;
   margin: 25px;
-  width: 400px;
+  width: 250px;
   padding: 5px;
 `
 const Button = styled.button`
