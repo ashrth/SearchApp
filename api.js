@@ -5,7 +5,7 @@ const databaseName='SearchApp'
 const client= new MongoClient(url)
 const app=express()
 
-app.get('/ads', async(req, resp)=>{
+app.get('/', async(req, resp)=>{
     let result= await client.connect()
     let db= result.db(databaseName)
     let collection= db.collection('Ads')

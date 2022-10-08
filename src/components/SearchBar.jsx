@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
 
 const SearchContainer = styled.div`
   border: 3px solid lightgray;
@@ -28,7 +27,7 @@ const AdsList = () => {
   }, [])
 
   const getAds = async () => {
-    let result = await fetch("http://localhost:3000/ads")
+    let result = await fetch("http://localhost:3000/")
     result = await result.json()
     setAds(result)
   }

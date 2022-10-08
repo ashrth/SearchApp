@@ -1,11 +1,13 @@
-
+#files
+setupTests.js
+App.test.js
 
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
-config
-scripts
+/config
+/scripts
 
 
 
