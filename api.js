@@ -7,8 +7,8 @@ const app=express()
 
 app.get('/', async(req, resp)=>{
     let result= await client.connect()
-    let db= result.db(databaseName)
-    let collection= db.collection('Ads')
+    let db= await result.db(databaseName)
+    let collection= await db.collection('Ads')
     let data= await collection.find().toArray()
     if(data.length>0){
         resp.send(data)
@@ -21,8 +21,8 @@ app.get('/', async(req, resp)=>{
 
 app.get("/search/:key", async(req,resp)=>{
     let result= await client.connect()
-    let db= result.db(databaseName)
-    let collection= db.collection('Ads')
+    let db= await result.db(databaseName)
+    let collection= await db.collection('Ads')
     let data= await collection.find(
         {
              "$or":[
