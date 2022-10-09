@@ -32,12 +32,12 @@ const AdsList = () => {
     setAds(result)
   }
   
-  console.warn(data)
+  
   
 
   const InputHandle = async (event) => {
     let key = event.target.value
-    let result = await fetch(`http://localhost:3000/search/${key}`)
+    let result = await fetch(`http://localhost:3000/${key}`)
     result=await result.json()
     setAds(result)
 
