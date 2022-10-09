@@ -9,55 +9,66 @@ const SearchContainer = styled.div`
   width: 250px;
   padding: 5px;
 `
-const Button = styled.button`
-  border: none;
-  padding: 10px;
-  margin: 4px;
-  background-color: black;
-  color: gray;
-  cursor: pointer;
-  font-weight: 400;
-`
 
-const AdsList = () => {
-  const [data, setAds] = useState([])
+
+const Search = () => {
+  const [ads, setAds] = useState([])
 
   useEffect(() => {
     getAds()
   }, [])
 
   const getAds = async () => {
-    let result = await fetch("http://localhost:3000/ads")
+    let result = await fetch("http://localhost:3000")
     result = await result.json()
     setAds(result)
   }
+  console.warn("ads", ads)
   
   
   
 
   const InputHandle = async (event) => {
     let key = event.target.value
-    let result = await fetch(`http://localhost:3000/ads/${key}`)
-    result=await result.json()
-    setAds(result)
-
-    if (result) {
+    if(key){
+      let result = await fetch(`http://localhost:3000/ads/${key}`)
+      result=await result.json()
       setAds(result)
-    } else {
+    
+    } else{
       getAds()
     }
+    
+
+    
   }
 
 
 
   return (
-    <SearchContainer>
+    <div> 
+      <h3> All Ads </h3>
+      <SearchContainer>
       <input type="" placeholder="Search Ads" onChange={InputHandle} />
       {/* <Search style={{ color: "gray", fontSize: 16 }} /> */}
+</SearchContainer>
+      <ul> 
+        <li> Name </li>
+        <li> Headline </li>
+      </ul>
+      {
+        ads.map((item)=>
+        <ul> 
+        <li> {item.name}</li>
+        <li> {item.headline} </li>
+      </ul>
+        )
+      }
+    
 
-      <Button> Submit </Button>
-    </SearchContainer>
+
+</div>
   )
 
   }
-export default AdsList
+export default Search
