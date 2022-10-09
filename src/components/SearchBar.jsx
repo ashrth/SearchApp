@@ -27,7 +27,7 @@ const AdsList = () => {
   }, [])
 
   const getAds = async () => {
-    let result = await fetch("http://localhost:3000/")
+    let result = await fetch("http://localhost:3000/ads")
     result = await result.json()
     setAds(result)
   }
@@ -37,7 +37,7 @@ const AdsList = () => {
 
   const InputHandle = async (event) => {
     let key = event.target.value
-    let result = await fetch(`http://localhost:3000/${key}`)
+    let result = await fetch(`http://localhost:3000/ads/${key}`)
     result=await result.json()
     setAds(result)
 
