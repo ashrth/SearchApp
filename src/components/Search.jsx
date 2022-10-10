@@ -27,7 +27,7 @@ const Search = () => {
   }, [])
 
   const getAds = async () => {
-    let result = await fetch("http://localhost:3000/ads")
+    let result = await fetch("http://localhost:5000/ads")
     result = await result.json()
     setAds(result)
   }
@@ -39,7 +39,7 @@ const Search = () => {
   const InputHandle = async (event) => {
     let key = event.target.value
     if(key){
-      let result = await fetch(`http://localhost:3000/ads/${key}`)
+      let result = await fetch(`http://localhost:5000/ads/${key}`)
       result=await result.json()
       setAds(result)
     
@@ -54,12 +54,14 @@ const Search = () => {
 
 
   return (
-    <AdsContainer> 
-      <h3> All Ads </h3>
-      <SearchContainer>
+    <div>
+    <SearchContainer>
       <input type="" placeholder="Search Ads" onChange={InputHandle} />
       {/* <Search style={{ color: "gray", fontSize: 16 }} /> */}
 </SearchContainer>
+    <AdsContainer> 
+     
+
       <ul> 
         <li> Name </li>
         <li> Headline </li>
@@ -74,7 +76,7 @@ const Search = () => {
       }
     
     </AdsContainer>
-
+    </div>
   )
 
   }
