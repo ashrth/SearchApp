@@ -59,13 +59,15 @@ useEffect(() => {
             </li>
           }
         </ul>
-      )
-      : (<h2>No Result Found</h2>)
+        
+  )
+  :
+(<h2>No Result Found</h2>)
     
-          }
+    }
   
   </div>
       )
-  }
+   
 }
 export default Search
