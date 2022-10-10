@@ -17,14 +17,10 @@ const Search = () => {
     setAds([...result])
   }
  
-
-  
-  
-
   const InputHandle = async (event) => {
     let key = event.target.value
-    if(ads.length){
-      const res = ads.filter((item) => 
+    if(result.length){
+      const res = result.filter((item) => 
      setResult([...res])
     
     } 
