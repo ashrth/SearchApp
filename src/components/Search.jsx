@@ -10,7 +10,7 @@ const SearchContainer = styled.div`
   padding: 5px;
 `
 const AdsContainer = styled.div`
-  border: 3px solid lightgray;
+  
   display: flex;
   align-adss: center;
   margin: 25px;
@@ -31,7 +31,7 @@ const Search = () => {
     result = await result.json()
     setAds(result)
   }
-  console.warn("ads", ads)
+ 
   
   
   
@@ -62,13 +62,10 @@ const Search = () => {
     <AdsContainer> 
      
 
-      <ul> 
-        <li> Name </li>
-        <li> Headline </li>
-      </ul>
       {
         ads.map((item)=>
         <ul> 
+          
         <li> {item.name}</li>
         <li> {item.headline} </li>
       </ul>
