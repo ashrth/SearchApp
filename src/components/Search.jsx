@@ -35,7 +35,7 @@ const onClickSearch = () => {
   setSearchResult([...res])
 }
 useEffect(() => {
-  fetch("http://localhost:5000/ads").then(response => JSON.parse(response)).then(response => setAds(response))
+  fetch("http://localhost:5000/ads").then((response) => response.json()).then((ads)=>{console.log(ads)})
  }, [])
 
 
@@ -44,23 +44,25 @@ useEffect(() => {
   <h1> SearchApp </h1>
   
   <input type="text" value={searchValue} className="searchadsbox" placeholder="Search Ads" onChange={InputHandle} />
-    <button class="searchbtn" onClick={onClickSearch}>Search</button>
+    <button className="searchbtn" onClick={onClickSearch}>Search</button>
     {
-      searchResult.length ? 
+      searchResult.length ? (
+<ul>
+  {
         
           searchResult.length && searchResult.map((item)=>
-          <ul>
+          
             <li key={item._id}> 
 
               <div className="adtitle">{item.name}</div> 
               <div> {item.headline} </div>
 
             </li>
-          
+}
         </ul>
         
-  
-  ):<h2>No Result Found</h2>
+  )
+  :(<h2>No Result Found</h2>)
     
     }
   
