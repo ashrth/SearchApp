@@ -26,7 +26,10 @@ const Search = () => {
 //   }
  
   const InputHandle = async (event) => {
-    
+    // let key = event.target.value
+    // if(ads.length){
+    //   const res = ads.filter((item) => 
+    //  setResult([...res])
 setSearchValue(event.target.value)
   }
 
