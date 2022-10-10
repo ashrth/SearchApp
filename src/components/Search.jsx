@@ -11,14 +11,14 @@ const Search = () => {
 
 
   useEffect(() => {
-    getAds()
+   
   }, [])
 
-  const getAds = async () => {
-    let result = await fetch("http://localhost:5000/ads")
-    result = await result.json()
-    setAds([...result])
-  }
+  // const getAds = async () => {
+  //   let result = await fetch("http://localhost:5000/ads")
+  //   result = await result.json()
+  //   setAds([...result])
+  // }
 //   const getAds = async () => {
 //     let result = await fetch("http://localhost:5000/ads")
 //     result = await result.json()
