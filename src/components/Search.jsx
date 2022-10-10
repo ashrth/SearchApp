@@ -44,7 +44,7 @@ useEffect(() => {
   <h1> SearchApp </h1>
   
   <input type="text" value={searchValue} className="searchadsbox" placeholder="Search Ads" onChange={InputHandle} />
-    <button onClick={onClickSearch}>Search</button>
+    <button class="searchbtn" onClick={onClickSearch}>Search</button>
     {
       searchResult.length ? 
         

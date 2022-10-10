@@ -50,6 +50,15 @@
  
 } 
 
+.searchbtn{
+  border: solid 1px rgb(17, 17, 17);
+  margin: 15px;
+  padding: 8px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
 .App-link {
   color: #61dafb;
 }
