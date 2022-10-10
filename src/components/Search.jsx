@@ -19,7 +19,7 @@ const Search = () => {
   }, [])
 
   const getAds = async () => {
-    let result = await fetch("http://localhost:3000")
+    let result = await fetch("http://localhost:3000/ads")
     result = await result.json()
     setAds(result)
   }
