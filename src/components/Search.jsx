@@ -1,23 +1,7 @@
 import React, { useEffect, useState } from "react"
-import styled from "styled-components"
+
 import { Link } from 'react-router-dom';
 
-const SearchContainer = styled.div`
-  border: 3px solid lightgray;
-  display: flex;
-  align-adss: center;
-  margin: 25px;
-  width: 250px;
-  padding: 5px;
-`
-const AdsContainer = styled.div`
-  
-  display: flex;
-  align-adss: center;
-  margin: 25px;
-  width: 250px;
-  padding: 5px;
-`
 
 
 const Search = () => {
@@ -30,50 +14,43 @@ const Search = () => {
   const getAds = async () => {
     let result = await fetch("http://localhost:5000/ads")
     result = await result.json()
-    setAds(result)
+    setAds([...result])
   }
  
-  
+
   
   
 
   const InputHandle = async (event) => {
     let key = event.target.value
-    if(key){
-      let result = await fetch(`http://localhost:5000/ads/${key}`)
-      result=await result.json()
-      setAds(result)
+    if(ads.length){
+      const res = ads.filter((item) => 
+     setResult([...res])
     
-    } else{
-      getAds()
-    }
+    } 
     
-
-    
-  }
+}
 
 
 
   return (
-    <div>
-    <SearchContainer>
-      <input type="" placeholder="Search Ads" onChange={InputHandle} />
-      {/* <Search style={{ color: "gray", fontSize: 16 }} /> */}
-</SearchContainer>
-    <AdsContainer> 
-     
-
+    <div className="ads-list">
+    <h1> SearchApp </h1>
+      <input type="" className="searchadsbox" placeholder="Search Ads" onChange={InputHandle} />
       {
-        ads.map((item)=>
-        <ul key={item.id}> 
+      
+         ads.length>0? ads.map((item)=>
+        <li key={item._id}> 
           
-        <div >{item.name}</div> 
+        <div className="adtitle">{item.name}</div> 
         <div> {item.headline} </div>
-      </ul>
+        
+      </li>
         )
+        :<h2>No Result Found</h2>
+      
       }
     
-    </AdsContainer>
     </div>
   )
 

@@ -24,6 +24,32 @@
   color: white;
 }
 
+.searchadsbox {
+  width: 500px;
+  margin: 20px;
+  height: 38px;
+  padding-left: 30px;
+  border: solid 1px rgb(6, 71, 97);
+}
+
+.adtitle{
+  color: rgb(120, 196, 133);
+  font-size: larger;
+}
+ .ads-list{
+  list-style-type:none;
+  display:inline-block;
+  
+  
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 45px;
+  width: 250px;
+  padding: 5px;
+  
+ 
+} 
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +61,5 @@
   to {
     transform: rotate(360deg);
   }
+
 }
