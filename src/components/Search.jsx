@@ -9,6 +9,14 @@ const SearchContainer = styled.div`
   width: 250px;
   padding: 5px;
 `
+const AdsContainer = styled.div`
+  border: 3px solid lightgray;
+  display: flex;
+  align-adss: center;
+  margin: 25px;
+  width: 250px;
+  padding: 5px;
+`
 
 
 const Search = () => {
@@ -46,7 +54,7 @@ const Search = () => {
 
 
   return (
-    <div> 
+    <AdsContainer> 
       <h3> All Ads </h3>
       <SearchContainer>
       <input type="" placeholder="Search Ads" onChange={InputHandle} />
@@ -65,9 +73,8 @@ const Search = () => {
         )
       }
     
+    </AdsContainer>
 
-
-</div>
   )
 
   }
