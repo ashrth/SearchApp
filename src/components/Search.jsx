@@ -8,12 +8,17 @@ const Search = () => {
   const [ads, setAds] = useState([])
   const [searchValue, setSearchValue] = useState('')
   const [searchResult, setSearchResult] = useState([])
-//   const [ads, setAds] = useState([])
+
 
   useEffect(() => {
     getAds()
   }, [])
 
+  const getAds = async () => {
+    let result = await fetch("http://localhost:5000/ads")
+    result = await result.json()
+    setAds([...result])
+  }
 //   const getAds = async () => {
 //     let result = await fetch("http://localhost:5000/ads")
 //     result = await result.json()
@@ -21,12 +26,6 @@ const Search = () => {
 //   }
  
   const InputHandle = async (event) => {
-//     let key = event.target.value
-//     if(result.length){
-//       const res = result.filter((key) => 
-//      setResult([...res])
-    
-//     } 
     
 setSearchValue(event.target.value)
   }
@@ -47,22 +46,21 @@ useEffect(() => {
   <input type="text" value={searchValue} className="searchadsbox" placeholder="Search Ads" onChange={InputHandle} />
     <button onClick={onClickSearch}>Search</button>
     {
-      searchResult.length ? (
-        <ul>
-          {
+      searchResult.length ? 
+        
           searchResult.length && searchResult.map((item)=>
-              <li key={item._id}> 
+          <ul>
+            <li key={item._id}> 
 
               <div className="adtitle">{item.name}</div> 
               <div> {item.headline} </div>
 
             </li>
-          }
+          
         </ul>
         
-  )
-  :
-(<h2>No Result Found</h2>)
+  
+  ):<h2>No Result Found</h2>
     
     }
   
