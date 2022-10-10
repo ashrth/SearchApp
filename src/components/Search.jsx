@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import { Link } from 'react-router-dom';
 
 const SearchContainer = styled.div`
   border: 3px solid lightgray;
@@ -64,10 +65,10 @@ const Search = () => {
 
       {
         ads.map((item)=>
-        <ul> 
+        <ul key={item.id}> 
           
-        <li> {item.name}</li>
-        <li> {item.headline} </li>
+        <div >{item.name}</div> 
+        <div> {item.headline} </div>
       </ul>
         )
       }
