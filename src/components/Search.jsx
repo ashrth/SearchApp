@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react"
+import _ from "debounce"
 import AllAds from "./AllAds"
 import FilteredAds from "./FilteredAds"
 
@@ -10,26 +11,47 @@ const Search = () => {
   const [ads, setAds] = useState([])
   const [searchValue, setSearchValue] = useState('')
   
- //debounce
-  // const debounce=(func)=>{
-  //   let timer;
-  //   return function (...args){
-  //     const result= this
-  //     if(timer) clearTimeout(timer)
-  //     timer= setTimeout(()=>{
-  //       timer=null
-  //       func.apply(result, args)
 
-  //     }, 500)
-  //   }
-  // }
+  const handleSearch = useCallback(
+    _.debounce(async (value) => {
+      filterSearchWithApi(value)
+    }, 500),
+    []
+  )
+  const getAllData = async () => {
+    try {
+      fetch("http://localhost:5000/ads")
+        .then((response) => response.json())
+        .then((ads) => {
+          setAds(ads)
+          console.log(ads)
+        })
+    } catch (err) {
+      console.log("error in getAllData", err)
+    }
+  }
+
+  const filterSearchWithApi = async (value) => {
+    try {
+      fetch(`http://localhost:5000/ads/${searchValue}`)
+        .then((response) => response.json())
+        .then((ads) => {
+          setAds(ads)
+          console.log(ads)
+        })
+     
+    } catch (err) {
+      console.log("error in filterSearchWithApi", err)
+    }
+  }
+ 
   const InputHandle = async (event) => {
     
     if(event.target.value.length==0){
       setIsSearch(false)
     }
 setSearchValue(event.target.value)
-
+handleSearch(event.target.value)
   }
 
 const handleClick = async (event) => {
@@ -44,13 +66,14 @@ const handleClick = async (event) => {
 }
 
 useEffect(() => {
-  fetch("http://localhost:5000/ads").then((response) => response.json())
-  .then((ads)=>{setAds(ads)
-    console.log(ads)
-})
+//   fetch("http://localhost:5000/ads").then((response) => response.json())
+//   .then((ads)=>{setAds(ads)
+//     console.log(ads)
+// })
+getAllData()
  }, [])
 
-// const debouncedversion= useCallback(debounce(InputHandle), [])
+
 
  return (
   <div className="ads-list">
