@@ -1,56 +1,34 @@
 import React, { useEffect, useState } from "react"
 
-import { Link } from 'react-router-dom';
-
-
-
 const Search = () => {
   const [isSearch, setIsSearch] = useState(false)
   const [filteredAds, setFilteredAds] = useState([])
   const [ads, setAds] = useState([])
   const [searchValue, setSearchValue] = useState('')
-  // const [searchResult, setSearchResult] = useState([])
-
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/ads/${searchValue}`).then((response) => response.json())
-    .then((data)=>{setFilteredAds(data)
-      console.log(data)
-  })
-   }, [])
-
-  // const getAds = async () => {
-  //   let result = await fetch("http://localhost:5000/ads")
-  //   result = await result.json()
-  //   setAds([...result])
-  // }
-//   const getAds = async () => {
-//     let result = await fetch("http://localhost:5000/ads")
-//     result = await result.json()
-//     setAds([...result])
-//   }
+  
  
   const InputHandle = async (event) => {
-    // let key = event.target.value
-    // if(ads.length){
-    //   const res = ads.filter((item) => 
-    //  setResult([...res])
     
+    if(event.target.value.length==0){
+      setIsSearch(false)
+    }
 setSearchValue(event.target.value)
+
   }
 
 const handleClick = async (event) => {
-  console.log("hello")
-  setIsSearch(true)
+  // console.log("hello")
+   setIsSearch(true)
   
-  const show = await fetch(`http://localhost:5000/ads/${searchValue}`).then((response) => response.json())
-    setFilteredAds(show)
-    console.log("hullo", show)
+  
+  //   console.log("hullo", show)
   // console.log("searc",searchValue)
-  // console.log(ads[0].name)
-  // const res = ads.filter(item => item.name == searchValue)
-  // console.log(res)
-  // setAds([...res])
+  console.log(ads[0].name)
+  const res = ads.filter(item => item.name == searchValue)
+  
+  console.log(res)
+  setFilteredAds([...res])
+  
   
 }
 useEffect(() => {
@@ -78,25 +56,27 @@ useEffect(() => {
     
     {!isSearch?
 ads.length ? 
-ads.length && ads.map((item)=>
-<ul>
-            <li key={item._id}> 
+  ads.map((item)=>
+  <div className="card-deck col-sm-5 mb-3 card-space ">
+  <div className="card">
+    <img src="..." className="card-img-top" alt="image"></img>
+    <div className="card-body">
+      <h5 className="card-title">{item.name}</h5>
+      <p className="card-text">{item.headline}</p>
+      
+    </div>
+  </div>
+</div>
 
-              <div className="adtitle">{item.name}</div> 
-              <div> {item.headline} </div>
-
-            </li>
-
-        </ul>
   
-  )
+ )
   :<h2>No Result Found</h2>
   :filteredAds.length ? 
   filteredAds.length && filteredAds.map((item)=>
   <ul>
               <li key={item._id}> 
   
-                <div className="adtitle">{item.name}</div> 
+                <div classNameNameName="adtitle">{item.name}</div> 
                 <div> {item.headline} </div>
   
               </li>
