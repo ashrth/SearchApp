@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 
 const Search = () => {
   const [isSearch, setIsSearch] = useState(false)
@@ -6,7 +6,22 @@ const Search = () => {
   const [ads, setAds] = useState([])
   const [searchValue, setSearchValue] = useState('')
   
- 
+ //debounce
+  const debounce=(func)=>{
+    let timer;
+    return function (...args){
+      const result= this
+      if(timer) clearTimeout(timer)
+      timer= setTimeout(()=>{
+        timer=null
+        func.apply(result, args)
+
+      }, 500)
+    }
+  }
+
+
+
   const InputHandle = async (event) => {
     
     if(event.target.value.length==0){
@@ -44,6 +59,7 @@ useEffect(() => {
 // })
 //  }, [])
 
+const debouncedversion= useCallback(debounce(InputHandle), [])
 
  return (
   <div className="ads-list">
